@@ -1,5 +1,4 @@
-class FileSplitter
-{
+class FileSplitter {
 	string m_filePath;
 	int m_fileNumber;
 	ProgressBar* m_progressBar;
@@ -9,11 +8,9 @@ public:
 		m_filePath(filePath), 
 		m_fileNumber(fileNumber),
 		m_progressBar(progressBar){
-
 	}
 
 	void split(){
-
 		//1.读取大文件
 
 		//2.分批次向小文件中写入
@@ -23,6 +20,5 @@ public:
 			progressValue = (i + 1) / progressValue;
 			m_progressBar->setValue(progressValue);
 		}
-
 	}
 };

@@ -4,9 +4,7 @@ public:
 	virtual ~IProgress(){}
 };
 
-
-class FileSplitter
-{
+class FileSplitter {
 	string m_filePath;
 	int m_fileNumber;
 
@@ -15,13 +13,11 @@ class FileSplitter
 public:
 	FileSplitter(const string& filePath, int fileNumber) :
 		m_filePath(filePath), 
-		m_fileNumber(fileNumber){
-
-	}
+		m_fileNumber(fileNumber) {
+  }
 
 
 	void split(){
-
 		//1.读取大文件
 
 		//2.分批次向小文件中写入
@@ -32,9 +28,7 @@ public:
 			progressValue = (i + 1) / progressValue;
 			onProgress(progressValue);//发送通知
 		}
-
 	}
-
 
 	void addIProgress(IProgress* iprogress){
 		m_iprogressList.push_back(iprogress);
@@ -43,13 +37,9 @@ public:
 	void removeIProgress(IProgress* iprogress){
 		m_iprogressList.remove(iprogress);
 	}
-
-
 protected:
 	virtual void onProgress(float value){
-		
 		List<IProgress*>::iterator itor=m_iprogressList.begin();
-
 		while (itor != m_iprogressList.end() )
 			(*itor)->DoProgress(value); //更新进度条
 			itor++;
